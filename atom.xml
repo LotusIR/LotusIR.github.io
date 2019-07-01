@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lotusir.github.io/"/>
-  <updated>2019-07-01T10:41:46.435Z</updated>
+  <updated>2019-07-01T11:47:20.387Z</updated>
   <id>https://lotusir.github.io/</id>
   
   <author>
@@ -17,24 +17,28 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>TEST</title>
-    <link href="https://lotusir.github.io/2019/07/01/TEST/"/>
-    <id>https://lotusir.github.io/2019/07/01/TEST/</id>
-    <published>2019-07-01T10:33:11.000Z</published>
-    <updated>2019-07-01T10:41:46.435Z</updated>
+    <title>abc</title>
+    <link href="https://lotusir.github.io/2019/07/01/abc/"/>
+    <id>https://lotusir.github.io/2019/07/01/abc/</id>
+    <published>2019-07-01T11:10:50.000Z</published>
+    <updated>2019-07-01T11:47:20.387Z</updated>
     
-    <content type="html"><![CDATA[<p>##ABC<br>111</p>]]></content>
+    <content type="html"><![CDATA[<p>##avd<br>ssss</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;##ABC&lt;br&gt;111&lt;/p&gt;
+        &lt;p&gt;##avd&lt;br&gt;ssss&lt;/p&gt;
 
       
     
     </summary>
     
+    
+      <category term="test" scheme="https://lotusir.github.io/tags/test/"/>
+    
+      <category term="cjysb" scheme="https://lotusir.github.io/tags/cjysb/"/>
     
   </entry>
   

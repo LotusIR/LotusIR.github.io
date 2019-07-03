@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Simple Blog">
 <meta property="og:description" content="最小生成树本文会介绍两种用于获取最小生成树的算法，同样只给出用法不给出证明。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-02T04:15:14.412Z">
+<meta property="og:updated_time" content="2019-07-03T16:07:28.355Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="图论最小生成树">
 <meta name="twitter:description" content="最小生成树本文会介绍两种用于获取最小生成树的算法，同样只给出用法不给出证明。">
@@ -221,8 +221,28 @@
     
 
     
+      
+    
 
     <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
 
   </li>
         
@@ -237,8 +257,10 @@
     
 
     
+      
+    
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>分类</a>
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>分类<span class="badge">2</span></a>
 
   </li>
         
@@ -253,8 +275,10 @@
     
 
     
+      
+    
 
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">16</span></a>
 
   </li>
         
@@ -269,8 +293,10 @@
     
 
     
+      
+    
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>归档</a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>归档<span class="badge">9</span></a>
 
   </li>
 
@@ -345,6 +371,8 @@
   
 
   
+    <div class="reading-progress-bar"></div>
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
@@ -394,13 +422,23 @@
                 
               
 
-              <time title="创建时间：2019-07-02 11:36:55 / 修改时间：12:15:14" itemprop="dateCreated datePublished" datetime="2019-07-02T11:36:55+08:00">2019-07-02</time>
+              <time title="创建时间：2019-07-02 11:36:55" itemprop="dateCreated datePublished" datetime="2019-07-02T11:36:55+08:00">2019-07-02</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-04 00:07:28" itemprop="dateModified" datetime="2019-07-04T00:07:28+08:00">2019-07-04</time>
+              </span>
             
           
 
@@ -429,6 +467,14 @@
           
           
 
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+                 阅读次数： 
+                <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+              </span>
+            </span>
           
 
           <br>
@@ -465,7 +511,7 @@
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">200</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> N,dis[maxn][maxn],vis[maxn],ans,mndis[maxn];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">prim</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//初始化，将1号点加入到生成树中</span></span><br><span class="line">    ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">1</span>;</span><br><span class="line">    vis[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt;= N;++i) mndis[i]=dis[<span class="number">1</span>][i];</span><br><span class="line">    <span class="keyword">while</span>(cnt != N)&#123;</span><br><span class="line">        <span class="keyword">int</span> mn = inf,id;</span><br><span class="line">        <span class="comment">//找出所有点中距离生成树最近的点</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!vis[i] &amp;&amp; mndis[i] &lt; mn)&#123;</span><br><span class="line">                mn = mndis[i];</span><br><span class="line">                id = i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将找到的点加入生成树</span></span><br><span class="line">        vis[id] = <span class="number">1</span>;</span><br><span class="line">        ans += mn;</span><br><span class="line">        cnt++;</span><br><span class="line">        <span class="comment">//更新剩余点到树的距离</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= N; i++) mndis[i] = min(mndis[i],dis[id][i]);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ios::sync_with_stdio(<span class="number">0</span>);<span class="built_in">cin</span>.tie(<span class="number">0</span>);<span class="built_in">cout</span>.tie(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; N)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!N) <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">memset</span>(dis,<span class="number">0</span>,<span class="keyword">sizeof</span>(dis));</span><br><span class="line">        <span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">        <span class="keyword">int</span> T = N * (N - <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">        <span class="keyword">while</span>(T--)&#123;</span><br><span class="line">            <span class="keyword">int</span> a,b,c;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; a &gt;&gt; b &gt;&gt; c;</span><br><span class="line">            dis[a][b] = dis[b][a] = c;</span><br><span class="line">        &#125;</span><br><span class="line">        prim();</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="Kruscal"><a href="#Kruscal" class="headerlink" title="Kruscal"></a>Kruscal</h3><p>Kruscal是一种以边为主体的贪心算法，下面简述算法过程。<br>1.从所有没有使用过的边中找出最短的一条边，标记为使用过了。<br>2.如果边的两个端点不在一棵树中，那么将这条边加入到树中，否则不加入。<br>3.重复1、2步直到所有点被联通（显然联通n个点需要n-1条边）。</p>
-<p>找最短边的过程可以用优先队列实现，而判断端点是否在同一棵树中，可以用并查集实现，本文不对并查集做介绍，会在将来的文章中单独介绍。<br>下面给出Kruscal算法的主体代码：</p>
+<p>找最短边的过程可以用优先队列实现，而判断端点是否在同一棵树中，可以用并查集实现，如果不会并查集，可以先阅读<a href="/2019/07/03/UnionFind/#more">这篇文章</a>，下面代码中的Find和Union函数毁在这篇文章中给出模版。<br>下面给出Kruscal算法的主体代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">kruscal</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>,cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//选取最短边直到没有边可以再选或者图已经联通</span></span><br><span class="line">    <span class="keyword">while</span>(!Q.empty() &amp;&amp; cnt != M<span class="number">-1</span>)&#123;</span><br><span class="line">        edge temp = Q.top();</span><br><span class="line">        Q.pop();</span><br><span class="line">        <span class="keyword">int</span> f = temp.from,t = temp.to,v = temp.val;</span><br><span class="line">        <span class="comment">//利用并查集判断是否在同一棵树中，如果不在则加入树中</span></span><br><span class="line">        <span class="keyword">if</span>(Find(t)!=Find(f))&#123;</span><br><span class="line">            Union(f,t);</span><br><span class="line">            cnt++;</span><br><span class="line">            ans+=v;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//没有选取到M-1条边（M为点的数量），说明图不能联通</span></span><br><span class="line">    <span class="keyword">if</span>(cnt != M<span class="number">-1</span>) <span class="built_in">puts</span>(<span class="string">"?"</span>);</span><br><span class="line">    <span class="comment">//图已联通，输出最小边权和</span></span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>同样给出例题：<a href="https://vjudge.net/problem/HDU-1863" target="_blank" rel="noopener">hdu1683</a><br>AC代码：</p>
@@ -498,11 +544,11 @@
         
         <div class="post-tags">
           
-            <a href="/tags/贪心/" rel="tag"># 贪心</a>
+            <a href="/tags/贪心/" rel="tag"><i class="fa fa-tag"></i> 贪心</a>
           
-            <a href="/tags/图论/" rel="tag"># 图论</a>
+            <a href="/tags/图论/" rel="tag"><i class="fa fa-tag"></i> 图论</a>
           
-            <a href="/tags/最小生成树/" rel="tag"># 最小生成树</a>
+            <a href="/tags/最小生成树/" rel="tag"><i class="fa fa-tag"></i> 最小生成树</a>
           
         </div>
       
@@ -598,7 +644,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -666,7 +712,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">15</span>
+                      
+                    
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -678,6 +726,32 @@
 
           
 
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/LotusIR" title="GitHub &rarr; https://github.com/LotusIR" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:378057639@qq.com" title="E-Mail &rarr; mailto:378057639@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+            </div>
           
 
           
@@ -737,20 +811,40 @@
 </div>
 
 
-  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.9.0</div>
 
 
 
-  <span class="post-meta-divider">|</span>
-
-
-
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.2</div>
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+    </span>
+  
+</div>
+
 
 
 
@@ -810,6 +904,8 @@
 
 
 
+  
+
 
 
   
@@ -820,6 +916,9 @@
 
   
   <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/reading_progress/reading_progress.js"></script>
 
 
   
@@ -1244,6 +1343,9 @@
       ta.readOnly = false;
       var result = document.execCommand('copy');
       
+        if (result) $(this).text('复制成功');
+        else $(this).text('复制失败');
+      
       ta.blur(); // For iOS
       $(this).blur();
       if (selected) {
@@ -1264,5 +1366,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/miku.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false}});</script></body>
 </html>

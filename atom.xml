@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lotusir.github.io/"/>
-  <updated>2019-07-03T16:03:50.646Z</updated>
+  <updated>2019-07-04T03:36:12.460Z</updated>
   <id>https://lotusir.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>HDU6096-String（AC自动机）</title>
+    <link href="https://lotusir.github.io/2019/07/04/HDU6096/"/>
+    <id>https://lotusir.github.io/2019/07/04/HDU6096/</id>
+    <published>2019-07-04T03:25:38.000Z</published>
+    <updated>2019-07-04T03:36:12.460Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目地址：<a href="http://acm.hdu.edu.cn/showproblem.php?pid=6096" target="_blank" rel="noopener">HDU6096</a><br><strong>Problem Description</strong><br>Bob has a dictionary with N words in it.<br>Now there is a list of words in which the middle part of the word has continuous letters disappeared. The middle part does not include the first and last character.<br>We only know the prefix and suffix of each word, and the number of characters missing is uncertain, it could be 0. But the prefix and suffix of each word can not overlap.<br>For each word in the list, Bob wants to determine which word is in the dictionary by prefix and suffix.<br>There are probably many answers. You just have to figure out how many words may be the answer.</p><a id="more"></a><p><strong>Input</strong><br>The first line of the input gives the number of test cases T; T test cases follow.<br>Each test case contains two integer N and Q, The number of words in the dictionary, and the number of words in the list.<br>Next N line, each line has a string Wi, represents the ith word in the dictionary (0&lt;|Wi|≤100000)<br>Next Q line, each line has two string Pi , Si, represents the prefix and suffix of the ith word in the list (0&lt;|Pi|,|Si|≤100000,0&lt;|Pi|+|Si|≤100000)<br>All of the above characters are lowercase letters.<br>The dictionary does not contain the same words.</p><p>Limits<br>T≤5<br>0&lt;N,Q≤100000<br>∑Si+Pi≤500000<br>∑Wi≤500000</p><p><strong>Output</strong><br>For each test case, output Q lines, an integer per line, represents the answer to each word in the list.</p><p><strong>Sample Input</strong><br>1<br>4 4<br>aba<br>cde<br>acdefa<br>cdef<br>a a<br>cd ef<br>ac a<br>ce f</p><p><strong>Sample Output</strong><br>2<br>1<br>1<br>0</p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;题目地址：&lt;a href=&quot;http://acm.hdu.edu.cn/showproblem.php?pid=6096&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;HDU6096&lt;/a&gt;&lt;br&gt;&lt;strong&gt;Problem Description&lt;/strong&gt;&lt;br&gt;Bob has a dictionary with N words in it.&lt;br&gt;Now there is a list of words in which the middle part of the word has continuous letters disappeared. The middle part does not include the first and last character.&lt;br&gt;We only know the prefix and suffix of each word, and the number of characters missing is uncertain, it could be 0. But the prefix and suffix of each word can not overlap.&lt;br&gt;For each word in the list, Bob wants to determine which word is in the dictionary by prefix and suffix.&lt;br&gt;There are probably many answers. You just have to figure out how many words may be the answer.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="ACM解题报告" scheme="https://lotusir.github.io/categories/ACM%E8%A7%A3%E9%A2%98%E6%8A%A5%E5%91%8A/"/>
+    
+    
+      <category term="AC自动机" scheme="https://lotusir.github.io/tags/AC%E8%87%AA%E5%8A%A8%E6%9C%BA/"/>
+    
+      <category term="字符串" scheme="https://lotusir.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+  </entry>
   
   <entry>
     <title>并查集</title>

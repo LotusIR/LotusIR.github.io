@@ -87,8 +87,8 @@
         <category>ACM算法基础</category>
       </categories>
       <tags>
-        <tag>字符串</tag>
         <tag>Trie</tag>
+        <tag>字符串</tag>
         <tag>数据结构</tag>
       </tags>
   </entry>
@@ -101,7 +101,7 @@
       </categories>
       <tags>
         <tag>kmp</tag>
-        <tag>trie</tag>
+        <tag>Trie</tag>
         <tag>AC自动机</tag>
         <tag>字符串</tag>
       </tags>

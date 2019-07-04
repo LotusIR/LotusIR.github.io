@@ -3,7 +3,7 @@
   <entry>
     <title><![CDATA[HDU6096-String（AC自动机）]]></title>
     <url>%2F2019%2F07%2F04%2FHDU6096%2F</url>
-    <content type="text"><![CDATA[题目地址：HDU6096Problem DescriptionBob has a dictionary with N words in it.Now there is a list of words in which the middle part of the word has continuous letters disappeared. The middle part does not include the first and last character.We only know the prefix and suffix of each word, and the number of characters missing is uncertain, it could be 0. But the prefix and suffix of each word can not overlap.For each word in the list, Bob wants to determine which word is in the dictionary by prefix and suffix.There are probably many answers. You just have to figure out how many words may be the answer. InputThe first line of the input gives the number of test cases T; T test cases follow.Each test case contains two integer N and Q, The number of words in the dictionary, and the number of words in the list.Next N line, each line has a string Wi, represents the ith word in the dictionary (0&lt;|Wi|≤100000)Next Q line, each line has two string Pi , Si, represents the prefix and suffix of the ith word in the list (0&lt;|Pi|,|Si|≤100000,0&lt;|Pi|+|Si|≤100000)All of the above characters are lowercase letters.The dictionary does not contain the same words. LimitsT≤50&lt;N,Q≤100000∑Si+Pi≤500000∑Wi≤500000 OutputFor each test case, output Q lines, an integer per line, represents the answer to each word in the list. Sample Input14 4abacdeacdefacdefa acd efac ace f Sample Output2110]]></content>
+    <content type="text"><![CDATA[题目地址：HDU6096Problem DescriptionBob has a dictionary with N words in it.Now there is a list of words in which the middle part of the word has continuous letters disappeared. The middle part does not include the first and last character.We only know the prefix and suffix of each word, and the number of characters missing is uncertain, it could be 0. But the prefix and suffix of each word can not overlap.For each word in the list, Bob wants to determine which word is in the dictionary by prefix and suffix.There are probably many answers. You just have to figure out how many words may be the answer. InputThe first line of the input gives the number of test cases T; T test cases follow.Each test case contains two integer N and Q, The number of words in the dictionary, and the number of words in the list.Next N line, each line has a string Wi, represents the ith word in the dictionary (0&lt;|Wi|≤100000)Next Q line, each line has two string Pi , Si, represents the prefix and suffix of the ith word in the list (0&lt;|Pi|,|Si|≤100000,0&lt;|Pi|+|Si|≤100000)All of the above characters are lowercase letters.The dictionary does not contain the same words. LimitsT≤50&lt;N,Q≤100000∑Si+Pi≤500000∑Wi≤500000 OutputFor each test case, output Q lines, an integer per line, represents the answer to each word in the list. Sample Input14 4abacdeacdefacdefa acd efac ace f Sample Output2110 题意：给若干个字符串，进行若干次询问，每次询问给出一个前缀和后缀，问同时有这个前缀和后缀的字符串有几个，前缀与后缀不能重叠。解题：一道构造很巧妙的AC自动机题，首先存下给出的字符串，接着将给出的前缀(s1)和后缀(s2)以s2 + ‘{‘ + s1的形式插入字典树，构造AC自动机Fail指针，然后将每个字符串S转换成S + ‘{‘ + S的形式在AC自动机上跑，每经过一个结束节点就在这个节点的计数器上加一，不过要注意由于前缀和后缀不能重叠，因此s2+s1的长度不能超过S，最后按照询问的顺序输出结束节点的计数器即可。之所以用’{‘是因为它等于’a’+26容易建树，当然也可以用别的字符。以cd ef的查询为例，他被构造成了”ef{cd”插入了字典树，那么当用cdef{cdef跑AC自动机时就会找到这个子串。如果不用’{‘分割，那么ab cd就会匹配到aabcde，显然是不对的。最后是AC代码： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129#include &lt;bits/stdc++.h&gt;const int maxn = 1e5 + 200;const int inf = 0x3f3f3f3f;using namespace std;struct trie&#123; trie *nxt[27]; trie *fail; int len; int cnt; trie() &#123; len = 0; cnt = 0; fail = NULL; memset(nxt,NULL,sizeof(nxt)); &#125;&#125;;trie *root,*tr[maxn];int T,N,Q,tot;string S[maxn],s1,s2;void Insert(string s)&#123; trie *p = root; for(int i = 0; i &lt; s.length(); i++) &#123; int id = s[i]-'a'; if(p-&gt;nxt[id] != NULL) &#123; p = p-&gt;nxt[id]; &#125; else &#123; p -&gt; nxt[id] = new trie; p = p -&gt; nxt[id]; &#125; &#125; tr[tot++] = p; p -&gt; len = s.length();&#125;void getFail()&#123; queue&lt;trie*&gt; q; q.push(root); trie *temp,*p; while(!q.empty()) &#123; p = q.front(); q.pop(); for(int i = 0; i &lt; 27; ++i) &#123; if(p -&gt; nxt[i]) &#123; if(p == root) p -&gt; nxt[i] -&gt; fail = root; else &#123; temp = p -&gt; fail; while(temp) &#123; if(temp -&gt; nxt[i]) &#123; p -&gt; nxt[i] -&gt; fail = temp -&gt; nxt[i]; break; &#125; temp = temp -&gt; fail; &#125; if(!temp) p -&gt; nxt[i] -&gt; fail = root; &#125; q.push(p -&gt; nxt[i]); &#125; &#125; &#125;&#125;void query(string s)&#123; trie *p = root; trie *temp; for(int i = 0; i &lt; s.length(); ++i)&#123; int id = s[i]-'a'; while(!p -&gt; nxt[id] &amp;&amp; p != root) p = p -&gt; fail; p = p -&gt; nxt[id]; if(p == NULL) p = root; temp = p; while(temp != root) &#123; if(temp-&gt;len &lt;= (s.length()-1)/2+1) temp-&gt;cnt++; temp = temp -&gt; fail; &#125; &#125;&#125;void Free(trie *p)&#123; for(int i = 0; i &lt; 27; ++i) &#123; if(p -&gt; nxt[i] != NULL) Free(p-&gt;nxt[i]); &#125; delete(p); p = NULL;&#125;int main()&#123; ios::sync_with_stdio(0);cin.tie(0);cout.tie(0); cin &gt;&gt; T; while(T--)&#123; tot = 0; root = new trie; cin &gt;&gt; N &gt;&gt; Q; for(int i = 0; i &lt; N; ++i)&#123; cin &gt;&gt; S[i]; S[i] = S[i] + '&#123;' + S[i]; &#125; while(Q--)&#123; cin &gt;&gt; s1 &gt;&gt; s2; Insert(s2+'&#123;'+s1); &#125; getFail(); for(int i = 0;i &lt; N; ++i) query(S[i]); for(int i = 0;i &lt; tot;i++) cout &lt;&lt; tr[i]-&gt;cnt&lt;&lt; endl; Free(root); &#125; return 0;&#125;]]></content>
       <categories>
         <category>ACM解题报告</category>
       </categories>
@@ -99,9 +99,9 @@
         <category>ACM算法基础</category>
       </categories>
       <tags>
-        <tag>Trie</tag>
         <tag>字符串</tag>
         <tag>数据结构</tag>
+        <tag>Trie</tag>
       </tags>
   </entry>
   <entry>
@@ -112,10 +112,10 @@
         <category>ACM算法基础</category>
       </categories>
       <tags>
-        <tag>kmp</tag>
-        <tag>Trie</tag>
         <tag>AC自动机</tag>
         <tag>字符串</tag>
+        <tag>Trie</tag>
+        <tag>kmp</tag>
       </tags>
   </entry>
 </search>

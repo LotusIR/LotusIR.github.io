@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Simple Blog">
 <meta property="og:description" content="前言暑期集训开始了呢！一点都不兴奋呢！好吧不扯淡了，第一周学了STL、动态规划、搜索、数论等相关内容。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-07-29T06:49:43.203Z">
+<meta property="og:updated_time" content="2019-07-31T11:30:09.313Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="暑期集训第一周">
 <meta name="twitter:description" content="前言暑期集训开始了呢！一点都不兴奋呢！好吧不扯淡了，第一周学了STL、动态规划、搜索、数论等相关内容。">
@@ -260,7 +260,7 @@
       
     
 
-    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>分类<span class="badge">5</span></a>
+    <a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-book"></i> <br>分类<span class="badge">6</span></a>
 
   </li>
         
@@ -278,7 +278,7 @@
       
     
 
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">19</span></a>
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">20</span></a>
 
   </li>
         
@@ -296,7 +296,7 @@
       
     
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>归档<span class="badge">16</span></a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>归档<span class="badge">17</span></a>
 
   </li>
 
@@ -422,13 +422,23 @@
                 
               
 
-              <time title="创建时间：2019-07-29 13:24:14 / 修改时间：14:49:43" itemprop="dateCreated datePublished" datetime="2019-07-29T13:24:14+08:00">2019-07-29</time>
+              <time title="创建时间：2019-07-29 13:24:14" itemprop="dateCreated datePublished" datetime="2019-07-29T13:24:14+08:00">2019-07-29</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-07-31 19:30:09" itemprop="dateModified" datetime="2019-07-31T19:30:09+08:00">2019-07-31</time>
+              </span>
             
           
 
@@ -481,6 +491,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>暑期集训开始了呢！一点都不兴奋呢！<br>好吧不扯淡了，第一周学了STL、动态规划、搜索、数论等相关内容。</p>
 <a id="more"></a>
+<hr>
 <h1 id="STL"><a href="#STL" class="headerlink" title="STL"></a>STL</h1><p>讲道理STL、C++的训练题真是一点意思也没有，全是模拟，没什么特别的题，先贴一个<del>或许</del>会用的到的函数吧（貌似以前就说过但不怎么用。。）。<br><code>lower_bound(a,a+N,ask)</code>函数,找到在a~a[N-1]范围内第一个比ask大的元素（可能是数字也可能是字符串、字符等）。返回一个指针，将这个指针减去a可以得到下标，由于是用二分实现，复杂度为<code>log(n)</code>。<br>然后的话队列套队列挺有意思的（也可以各种STL嵌套），就贴这道题吧。</p>
 <h2 id="UVA-540"><a href="#UVA-540" class="headerlink" title="UVA-540"></a>UVA-540</h2><p>VJ地址：<a href="https://vjudge.net/contest/313405#problem/F" target="_blank" rel="noopener">UVA540</a><br>题意简述：有若干个人排队，每个人有一个所属的队伍，当一个新来的人进入队列时，如果有队友在队列中，则插入最后一个队友的后面，否则排到队尾。ENQUEUE x代表x号进入队伍，DEQUEUE代表队列第一人出队，对于每一次DEQUEUE输出出队的人的编号，STOP停止模拟。<br>解题：模拟就完事了，维护一个队伍的队列和队伍内的队列。<br>AC代码：</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span>+<span class="number">200</span>;</span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; teamqueue;</span><br><span class="line"><span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; manqueue[maxn];</span><br><span class="line"><span class="built_in">map</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; Team;</span><br><span class="line"><span class="keyword">bool</span> inqueue[maxn];</span><br><span class="line"><span class="keyword">int</span> t,a,n,kase;</span><br><span class="line"><span class="built_in">string</span> op;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; t)&#123;</span><br><span class="line">        <span class="keyword">if</span>(t==<span class="number">0</span>) <span class="keyword">break</span>;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Scenario #"</span> &lt;&lt; ++kase &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i)&#123;</span><br><span class="line">            <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">            <span class="keyword">while</span>(n--)&#123;</span><br><span class="line">                <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">                Team[a]=i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(<span class="built_in">cin</span> &gt;&gt; op)&#123;</span><br><span class="line">            <span class="keyword">if</span>(op==<span class="string">"STOP"</span>) <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">if</span>(op==<span class="string">"ENQUEUE"</span>)&#123;</span><br><span class="line">                <span class="built_in">cin</span> &gt;&gt; a;</span><br><span class="line">                <span class="keyword">if</span>(inqueue[Team[a]]) manqueue[Team[a]].push(a);</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    manqueue[Team[a]].push(a);</span><br><span class="line">                    teamqueue.push(Team[a]);</span><br><span class="line">                    inqueue[Team[a]]=<span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(op==<span class="string">"DEQUEUE"</span>)&#123;</span><br><span class="line">                <span class="keyword">int</span> teamid=teamqueue.front();</span><br><span class="line">                <span class="keyword">int</span> manid=manqueue[teamid].front();</span><br><span class="line">                manqueue[teamid].pop();</span><br><span class="line">                <span class="keyword">if</span>(manqueue[teamid].empty())&#123;</span><br><span class="line">                    teamqueue.pop();</span><br><span class="line">                    inqueue[teamid]=<span class="literal">false</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; manid &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= t; ++i)</span><br><span class="line">            <span class="keyword">while</span>(!manqueue[i].empty()) manqueue[i].pop();</span><br><span class="line">        <span class="keyword">while</span>(!teamqueue.empty()) teamqueue.pop();</span><br><span class="line">        <span class="built_in">memset</span>(inqueue,<span class="number">0</span>,<span class="keyword">sizeof</span>(inqueue));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -569,6 +580,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/07/31/TrainSegTree/" rel="prev" title="暑期集训--线段树篇">
+                暑期集训--线段树篇 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -638,7 +653,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">16</span>
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -654,6 +669,8 @@
                     
                   
                     
+                    
+                      
                     
                       
                     
@@ -681,6 +698,8 @@
                     
                   
                     
+                    
+                      
                     
                       
                     

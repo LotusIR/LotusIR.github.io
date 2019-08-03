@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Simple Blog">
 <meta property="og:description" content="还不知道KMP原理只会用的路过。。">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-08-03T08:22:38.532Z">
+<meta property="og:updated_time" content="2019-08-03T08:24:04.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="暑期集训——KMP和字典树">
 <meta name="twitter:description" content="还不知道KMP原理只会用的路过。。">
@@ -422,7 +422,7 @@
                 
               
 
-              <time title="创建时间：2019-08-03 15:30:35 / 修改时间：16:22:38" itemprop="dateCreated datePublished" datetime="2019-08-03T15:30:35+08:00">2019-08-03</time>
+              <time title="创建时间：2019-08-03 15:30:35 / 修改时间：16:24:04" itemprop="dateCreated datePublished" datetime="2019-08-03T15:30:35+08:00">2019-08-03</time>
             </span>
           
 
@@ -468,7 +468,7 @@
 <a id="more"></a>
 <hr>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在讲题之前，说一下<code>next[]</code>数组的含义，<code>next[i]</code>是指在第i个位置前（不包含i）的最大前后缀长度。</p>
-<p>以及一个结论：<br><strong>设有字符串<code>str</code>，使<code>len=strlen(str)</code>以及<code>length=len-next[len]</code>，如果<code>len%length==0</code>，那么这个<code>str</code>是一个循环字符串，且循环节的长度为<code>len%length</code>。</strong><br>至于原理：<br><em>quote</em></p>
+<p>以及一个结论：<br><strong>设有字符串<code>str</code>，使<code>len=strlen(str)</code>以及<code>length=len-next[len]</code>，如果<code>len%length==0</code>，那么这个<code>str</code>是一个循环字符串，且循环节的长度为<code>len/length</code>。</strong><br>至于原理：<br><em>quote</em></p>
 <blockquote>
 <p>假设我们有一个字符串ababab,那么next[6]=4对吧，由于next的性质是，匹配失败后，下一个能继续进行匹配的位置，也就是说，把字符串的前四个字母，abab,平移2个单位，这个abab一定与原串的abab重合（否则就不满足失败函数的性质），这说明了什么呢，由于字符串进行了整体平移，而平移后又要重叠，那么必有s[1]=s[3],s[2]=s[4],s[3]=s[5],s[4]=s[6].说明长度为2的字符串在原串中一定重复出现，这就是len-next[len]的含义！</p>
 </blockquote>

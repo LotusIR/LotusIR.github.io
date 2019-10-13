@@ -278,7 +278,7 @@
       
     
 
-    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">23</span></a>
+    <a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">24</span></a>
 
   </li>
         
@@ -296,7 +296,7 @@
       
     
 
-    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>归档<span class="badge">20</span></a>
+    <a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>归档<span class="badge">21</span></a>
 
   </li>
 
@@ -487,6 +487,165 @@
             </div>
           
           <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://lotusir.github.io/2019/09/25/transformer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="LotusIR">
+      <meta itemprop="description" content="ACM">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Simple Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/09/25/transformer/" class="post-title-link" itemprop="url">神经网络-NLP Transformer</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+
+          
+          
+          
+
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-09-25 20:48:17 / 修改时间：22:03:07" itemprop="dateCreated datePublished" datetime="2019-09-25T20:48:17+08:00">2019-09-25</time>
+            </span>
+          
+
+          
+            
+
+            
+          
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          <br>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Transformer"><a href="#Transformer" class="headerlink" title="Transformer"></a>Transformer</h1><p>Transformer模型是在GOOGLE的一篇论文<strong>Attention is All You Need</strong>被提出的一种神经网络模型。</p>
+<h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p>该模型主要用于机器翻译，简单来说输入一种语言的一句话，它会把这句话翻译成别的语言。<br><img src="IMG/Transformer/usage.png?raw=true" alt="avator"></p>
+<h2 id="整体结构"><a href="#整体结构" class="headerlink" title="整体结构"></a>整体结构</h2><p>Transformer的整体结构由<strong>encoder-decoder</strong>两部分构成，在论文中，采用了6层encoder和6层decoder的结构，实际上可以是任意层的，论文中的模型整体结构如下图所示。<br><img src="IMG/Transformer/overview.png?raw=true" alt="avator"></p>
+<h2 id="encoder"><a href="#encoder" class="headerlink" title="encoder"></a>encoder</h2><p>每一层的encoder层由两层组成，一层<strong>self-attention</strong>层以及一层前馈神经网络。除此以外，在第一层encoder前还需要进行词嵌入。第一层的encoder层如下图所示，之后的每一层encoder层讲上一层encoder层的前馈神经网络的输出作为输入，其余结构相同。<br><img src="IMG/Transformer/encoder.png?raw=true" alt="avator"></p>
+<h2 id="self-attention"><a href="#self-attention" class="headerlink" title="self-attention"></a>self-attention</h2><h3 id="用途-1"><a href="#用途-1" class="headerlink" title="用途"></a>用途</h3><p><strong>self-attention</strong>是一种特别的注意力机制，但它与传统的注意力机制类似都用于获取句子中其他词与当前词的关系。</p>
+<blockquote>
+<p>假设下面的句子就是我们需要翻译的输入句：</p>
+<p>“The animal didn’t cross the street because it was too tired”</p>
+<pre><code>这句话中的&quot;it&quot;指的是什么？它指的是“animal”还是“street”？对于人来说，这其实是一个很简单的问题，但是对于一个算法来说，处理这个问题其实并不容易。self attention的出现就是为了解决这个问题，通过self attention，我们能将“it”与“animal”联系起来。</code></pre></blockquote>
+<p>通过一张图来描述<strong>self-attention</strong>处理”it”后的情况如下图所示。<br><img src="IMG/Transformer/SelfAttention-HL.png?raw=true" alt="avator"><br>通过这张图可以看出，”it”与”the animal”的联系最大，该模型通过<strong>self-attention</strong>学习到了这一点。</p>
+<h3 id="计算方式"><a href="#计算方式" class="headerlink" title="计算方式"></a>计算方式</h3><p>对于每一个输入，我们将三个矩阵（要在训练中得到具体值，初始随机）与输入相乘，得到三个新的矩阵”queries”,”keys”,”values”,在经过一系列的计算可以得到其余输入与当前输入的关系，加权后作为下一层前馈网络的输入。<br><img src="IMG/Transformer/SelfAttention-CAL1.png?raw=true" alt="avator"><br>计算的过程如下<br><img src="IMG/Transformer/SelfAttention-CAL2.png?raw=true" alt="avator"></p>
+<h3 id="multi-headed-attention"><a href="#multi-headed-attention" class="headerlink" title="multi-headed attention"></a>multi-headed attention</h3><p>该模型还应用了叫做<strong>multi-headed attention</strong>的方法，实际上就是用多个矩阵来生成上述的”queries”,”keys”,”values”三个矩阵，具体操作过程中是将多个矩阵拼成一个大矩阵再乘上一个权重矩阵获得，该权重矩阵的值也在训练中获得。<br><img src="IMG/Transformer/multiattention.png?raw=true" alt="avator"></p>
+<h2 id="decoder"><a href="#decoder" class="headerlink" title="decoder"></a>decoder</h2><p><strong>decoder</strong>层的结构与encoder层类似，除了多了一层<strong>attention</strong>层外均与encoder层相同。<br><img src="IMG/Transformer/encoder&decodr.png?raw=true" alt="avator"></p>
+<h2 id="postional-encoding"><a href="#postional-encoding" class="headerlink" title="postional-encoding"></a>postional-encoding</h2><p>为了得到输入序列中的单词顺序，该模型通过一个固定的公式来生成单词的位置向量并将其加入到了词嵌入的过程中。</p>
+
+          
         
       
     </div>
@@ -738,13 +897,23 @@
                 
               
 
-              <time title="创建时间：2019-08-03 15:30:35 / 修改时间：16:24:04" itemprop="dateCreated datePublished" datetime="2019-08-03T15:30:35+08:00">2019-08-03</time>
+              <time title="创建时间：2019-08-03 15:30:35" itemprop="dateCreated datePublished" datetime="2019-08-03T15:30:35+08:00">2019-08-03</time>
             </span>
           
 
           
             
 
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-10-13 09:42:38" itemprop="dateModified" datetime="2019-10-13T09:42:38+08:00">2019-10-13</time>
+              </span>
             
           
 
@@ -1361,183 +1530,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://lotusir.github.io/2019/07/08/HDU09/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="LotusIR">
-      <meta itemprop="description" content="ACM">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Simple Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/07/08/HDU09/" class="post-title-link" itemprop="url">HDU09</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-
-          
-          
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-07-08 19:38:08" itemprop="dateCreated datePublished" datetime="2019-07-08T19:38:08+08:00">2019-07-08</time>
-            </span>
-          
-
-          
-            
-
-            
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-07-29 14:49:12" itemprop="dateModified" datetime="2019-07-29T14:49:12+08:00">2019-07-29</time>
-              </span>
-            
-          
-
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/ACM自闭日记/" itemprop="url" rel="index"><span itemprop="name">ACM自闭日记</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          <br>
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>比赛地址：<a href="http://acm.hdu.edu.cn/search.php?field=problem&key=2017+Multi-University+Training+Contest+-+Team+9&source=1&searchmode=source" target="_blank" rel="noopener">HDU09</a><br>做了四道。。还行吧。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/07/08/HDU09/" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1586,7 +1578,7 @@
                 
                   <a href="/archives">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1676,7 +1668,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">23</span>
+                      
+                    
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
